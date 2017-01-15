@@ -2,7 +2,8 @@
   (:require [clojure.string :as str]))
 
 (def operations {(symbol "+") (resolve (symbol "+"))
-                 (symbol "-") (resolve (symbol "-"))})
+                 (symbol "-") (resolve (symbol "-"))
+                 (symbol "*") (resolve (symbol "*"))})
 
 (defn- process-token [stack token]
   (let [object (read-string token)]
