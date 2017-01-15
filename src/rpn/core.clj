@@ -8,9 +8,13 @@
       (cons object stack)
       (if (= object '+)
         (if (>= (count stack) 2)
-          (cons (+ (first stack) (first (rest stack))) (drop 2 stack))
+          (cons (+ (first (rest stack)) (first stack)) (drop 2 stack))
           (throw (Exception. "Unexpected operator")))
-        (throw (Exception. "Unable to parse input"))))))
+        (if (= object '-)
+          (if (>= (count stack) 2)
+            (cons (- (first (rest stack)) (first stack)) (drop 2 stack))
+            (throw (Exception. "Unexpected operator")))
+          (throw (Exception. "Unable to parse input")))))))
 
 (defn calculator [expression]
   (let [tokens (str/split (str/trim expression) #"\s+")]
