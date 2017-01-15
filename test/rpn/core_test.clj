@@ -48,4 +48,9 @@
        (fact "When a / operation is not sent after two numbers it throws an error"
              (calculator "/") => (throws Exception "Unexpected operator")
              (calculator "2 /") => (throws Exception "Unexpected operator")
-             (calculator "2 / 1") => (throws Exception "Unexpected operator")))
+             (calculator "2 / 1") => (throws Exception "Unexpected operator"))
+       (fact "Works for the examples"
+             (calculator "20 5 /") => "4"
+             (calculator "4 2 + 3 -") => "3"
+             (calculator "3 5 8 * 7 + *") => "141"
+             (calculator "7 2 - 3 4") => "5 3 4"))
