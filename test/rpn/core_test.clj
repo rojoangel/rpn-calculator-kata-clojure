@@ -40,4 +40,12 @@
        (fact "When a - operation is not sent after two numbers it throws an error"
              (calculator "*") => (throws Exception "Unexpected operator")
              (calculator "2 *") => (throws Exception "Unexpected operator")
-             (calculator "2 * 1") => (throws Exception "Unexpected operator")))
+             (calculator "2 * 1") => (throws Exception "Unexpected operator"))
+       (fact "When a / operation is sent after two numbers it should display the result"
+             (calculator "8 2 /") => "4"
+             (calculator "8 2 / 2 /") => "2"
+             (calculator "8 2 / 2 / 2 /") => "1")
+       (fact "When a / operation is not sent after two numbers it throws an error"
+             (calculator "/") => (throws Exception "Unexpected operator")
+             (calculator "2 /") => (throws Exception "Unexpected operator")
+             (calculator "2 / 1") => (throws Exception "Unexpected operator")))
