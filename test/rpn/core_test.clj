@@ -7,16 +7,16 @@
              (calculator "1") => "1"
              (calculator "99") => "99")
        (fact "When an alpha character is sent it throws an error"
-             (calculator "a") => (throws Exception)
-             (calculator "Z") => (throws Exception)
-             (calculator "+") => (throws Exception))
+             (calculator "a") => (throws Exception "Unable to parse input")
+             (calculator "Z") => (throws Exception "Unable to parse input")
+             (calculator "P") => (throws Exception "Unable to parse input"))
        (fact "When some digits are sent it should display the number formed by those digits"
              (calculator "1 2") => "1 2"
              (calculator " 1 2 ") => "1 2")
        (fact "When the expression constains an alpha it throws an error"
-             (calculator "1 a") => (throws Exception)
-             (calculator "a 1") => (throws Exception)
-             (calculator " 1 a ") => (throws Exception))
+             (calculator "1 a") => (throws Exception "Unable to parse input")
+             (calculator "a 1") => (throws Exception "Unable to parse input")
+             (calculator " 1 a ") => (throws Exception "Unable to parse input"))
        (fact "When a + operation is sent after two numbers it should display the result"
              (calculator "1 2 +") => "3"
              (calculator "1 2 + 3 +") => "6"
