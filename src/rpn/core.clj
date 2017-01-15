@@ -1,7 +1,12 @@
-(ns rpn.core)
+(ns rpn.core
+  (:require [clojure.string :as str]))
+
+(defn- parse-token [token]
+  (let [object (read-string token)]
+    (if (number? object)
+      (str object)
+      (throw (Exception. "Unable to parse input")))))
 
 (defn calculator [expression]
-  (let [n (read-string expression)]
-    (if (number? n)
-      (str n)
-      (throw (Exception. "Unable to parse input")))))
+  (let [tokens (str/split (str/trim expression) #"\s+")]
+    (str/join " " (map parse-token tokens))))
