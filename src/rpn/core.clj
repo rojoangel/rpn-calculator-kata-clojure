@@ -1,10 +1,10 @@
 (ns rpn.core
   (:require [clojure.string :as str]))
 
-(def operations {(symbol "+") (resolve (symbol "+"))
-                 (symbol "-") (resolve (symbol "-"))
-                 (symbol "*") (resolve (symbol "*"))
-                 (symbol "/") (resolve (symbol "/"))})
+(def operations {'+ +
+                 '- -
+                 '* *
+                 '/ /})
 
 (defn- process-number [number stack]
   (cons number stack))
