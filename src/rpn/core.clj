@@ -13,10 +13,8 @@
 (defn- process-number [number stack]
   (cons number stack))
 
-(defn- process-operation [operation stack]
-  (if (>= (count stack) 2)
-    (cons (operation (first (rest stack)) (first stack)) (drop 2 stack))
-    (throw (Exception. "Unexpected operator"))))
+(defn process-operation [operation stack]
+  (cons (operation (first (rest stack)) (first stack)) (drop 2 stack)))
 
 (defn- process-token [stack token]
   (if (number? token)
