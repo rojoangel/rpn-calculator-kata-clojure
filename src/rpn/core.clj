@@ -6,9 +6,18 @@
                  '* *
                  '/ /})
 
+(defn- filter-out-unsupported-symbols [symbols]
+  (filter #(or (number? %) (% operations)) symbols))
+
+(defn- validate-symbols [symbols]
+  (if (= symbols (filter-out-unsupported-symbols symbols))
+    symbols
+    (throw (Exception. "Unable to parse input"))))
+
 (defn- to-symbols [expression]
-  (let [tokens (str/split (str/trim expression) #"\s+")]
-    (map #(read-string %) tokens)))
+  (let [tokens (str/split (str/trim expression) #"\s+")
+        symbols (map #(read-string %) tokens)]
+    (validate-symbols symbols)))
 
 (defn- process-number [number stack]
   (cons number stack))
@@ -22,8 +31,7 @@
   (if (number? token)
     (process-number token stack)
     (if-let [operation (token operations)]
-      (process-operation operation stack)
-      (throw (Exception. "Unable to parse input")))))
+      (process-operation operation stack))))
 
 (defn calculator [expression]
   (let [tokens (to-symbols expression)]
