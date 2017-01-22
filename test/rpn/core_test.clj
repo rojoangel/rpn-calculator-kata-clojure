@@ -1,6 +1,6 @@
 (ns rpn.core-test
   (:use midje.sweet)
-  (:use [rpn.core]))
+  (:use [rpn.core] [rpn.errors]))
 
 (facts "About reverse polish notation calculator"
        (fact "When a digit is sent it should display the same digit"
