@@ -6,6 +6,10 @@
                  '* *
                  '/ /})
 
+(defn- to-symbols [expression]
+  (let [tokens (str/split (str/trim expression) #"\s+")]
+    (map #(read-string %) tokens)))
+
 (defn- process-number [number stack]
   (cons number stack))
 
@@ -15,13 +19,12 @@
     (throw (Exception. "Unexpected operator"))))
 
 (defn- process-token [stack token]
-  (let [object (read-string token)]
-    (if (number? object)
-      (process-number object stack)
-      (if-let [operation (object operations)]
-        (process-operation operation stack)
-        (throw (Exception. "Unable to parse input"))))))
+  (if (number? token)
+    (process-number token stack)
+    (if-let [operation (token operations)]
+      (process-operation operation stack)
+      (throw (Exception. "Unable to parse input")))))
 
 (defn calculator [expression]
-  (let [tokens (str/split (str/trim expression) #"\s+")]
+  (let [tokens (to-symbols expression)]
     (str/join " " (reverse (reduce process-token nil tokens)))))
