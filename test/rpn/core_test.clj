@@ -37,7 +37,7 @@
              (calculator "3 2 *") => "6"
              (calculator "9 2 * 3 *") => "54"
              (calculator "8 1 * 4 * 3 *") => "96")
-       (fact "When a - operation is not sent after two numbers it throws an error"
+       (fact "When a * operation is not sent after two numbers it throws an error"
              (calculator "*") => (throws Exception "Unexpected operator")
              (calculator "2 *") => (throws Exception "Unexpected operator")
              (calculator "2 * 1") => (throws Exception "Unexpected operator"))
