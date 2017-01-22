@@ -14,7 +14,7 @@
     (cons (operation (first (rest stack)) (first stack)) (drop 2 stack))
     (throw
       (ex-info "Unexpected operator"
-               {:operator operation :stack-size (count stack)}))))
+               {:error-type :unexpected-operator :operator operation :stack-size (count stack)}))))
 
 (defn- process-token [stack token]
   (let [object (read-string token)]
@@ -24,7 +24,7 @@
         (process-operation operation stack)
         (throw
           (ex-info "Unable to parse input"
-                   {:input token}))))))
+                   {:error-type :parse-error :input token}))))))
 
 (defn calculator [expression]
   (let [tokens (str/split (str/trim expression) #"\s+")]
