@@ -1,3 +1,5 @@
+_Note: This branch contains an alternative solution leveraging ```ex-info``` and ```ex-data``` for error handling_
+
 # Reverse Polish Notation Calculator Kata
 
 A RPN calculator program computes expressions written in RPN (Reverse Polish Notation).
