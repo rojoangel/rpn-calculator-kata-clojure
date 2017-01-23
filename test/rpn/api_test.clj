@@ -1,6 +1,6 @@
-(ns rpn.error-test
+(ns rpn.api-test
   (:use midje.sweet)
-  (:use [rpn.core] [rpn.errors]))
+  (:use [rpn.core] [rpn.api]))
 
 (facts "About reverse polish notation calculator error conditions"
        (fact "When an alpha character is sent it throws an error"

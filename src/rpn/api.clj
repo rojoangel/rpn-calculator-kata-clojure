@@ -1,4 +1,4 @@
-(ns rpn.errors
+(ns rpn.api
   (:require [rpn.core :refer :all]
             [dire.core :refer [with-postcondition! with-precondition! with-handler!]]))
 
