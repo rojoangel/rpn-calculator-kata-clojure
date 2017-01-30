@@ -19,7 +19,7 @@
 (defn- process-token [stack token]
   (if (number? token)
     (process-number token stack)
-    (if-let [operation (token operations)]
+    (when-let [operation (token operations)]
       (process-operation operation stack))))
 
 (defn calculator [expression]
