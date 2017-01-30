@@ -23,5 +23,8 @@
       (process-operation operation stack))))
 
 (defn calculator [expression]
-  (let [tokens (to-symbols expression)]
-    (str/join " " (reverse (reduce process-token nil tokens)))))
+  (->> expression
+       (to-symbols)
+       (reduce process-token nil)
+       (reverse)
+       (str/join " ")))
