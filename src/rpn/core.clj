@@ -7,8 +7,9 @@
                  '/ /})
 
 (defn- to-symbols [expression]
-  (let [tokens (str/split (str/trim expression) #"\s+")]
-    (map #(read-string %) tokens)))
+  (let [tokens (str/split (str/trim expression) #"\s+")
+        symbols (map #(read-string %) tokens)]
+    symbols))
 
 (defn- process-number [number stack]
   (cons number stack))
@@ -23,8 +24,5 @@
       (process-operation operation stack))))
 
 (defn calculator [expression]
-  (->> expression
-       (to-symbols)
-       (reduce process-token nil)
-       (reverse)
-       (str/join " ")))
+  (let [tokens (to-symbols expression)]
+    (str/join " " (reverse (reduce process-token nil tokens)))))
