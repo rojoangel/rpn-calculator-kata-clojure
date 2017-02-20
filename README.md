@@ -2,6 +2,7 @@ _Note: there are alternative solutions in the following branches:_
 - _error-handling-using-ex-info-and-ex-data: alternative solution leveraging ```ex-info``` and ```ex-data``` for error handling_
 - _error-handling-using-dire: alternative solution leveraging ```dire``` library for error handling_
 - _error-handling-using-exceptions: alternative solution using exceptions_
+- _error-handling-using-pre: alternative solution using :pre_
 
 
 # Reverse Polish Notation Calculator Kata
